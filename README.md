@@ -1,23 +1,19 @@
 # Meemansak Bharti — Digital business card
 
-Independent static website. No build step, framework, account or API key required.
+Live website: https://meemansak.github.io/business-card/
+Repository: https://github.com/meemansak/business-card
 
-## Files
+Independent static website. No build step or API keys required. Edit the website in `dist/`; pushing `main` to the `github` remote automatically deploys it through `.github/workflows/pages.yml`.
 
 - `dist/index.html`: contact page
-- `dist/style.css`: visual design and responsive layout
+- `dist/style.css`: responsive visual design
 - `dist/card.html`: business card source, 1200 × 700
-- `dist/assets/business-card.png`: exported shareable image, 2400 × 1400
+- `dist/assets/business-card.png`: downloadable card, 2400 × 1400
 - `dist/meemansak-bharti.vcf`: downloadable contact
-- `dist/assets/connect-qr.png`: QR pointing to the live contact page
+- `dist/assets/connect-qr.png`: QR opening the GitHub Pages website
 
-## GitHub Pages
+Local project folder: D:\Business card Website
 
-Create your own GitHub repository and push this folder's contents to `main`. In Settings → Pages, choose **GitHub Actions** as the deployment source. The included `.github/workflows/pages.yml` publishes only `dist/`. All asset links are relative and support a repository subpath. The current Git remote belongs to Sites; add a separate GitHub remote instead of overwriting it if you want to retain Sites publishing.
+To change the website address later, update `dist/app.js`, `dist/index.html`, `dist/card.html` and `make-qr.py`. Regenerate the QR and re-export the card. Already shared card images retain their original QR destination.
 
-The QR and social preview currently point to:
-https://meemansak-bharti-connect.quirkyrhea64.chatgpt.site
-
-When moving to a permanent GitHub Pages URL or custom domain, update the URL in `dist/app.js`, `dist/index.html`, `dist/card.html` and `make-qr.py`, regenerate the QR, and re-export the PNG. Existing shared images continue to point to the old URL until you redirect that URL or share a new card.
-
-`verify.cjs` generates screenshots using this computer's local Playwright and Chrome installation; it is an optional local authoring utility, not a website dependency. Fonts are self-hosted; their licenses are in `dist/assets/`.
+`make-qr.py` uses ReportLab and Pillow. `verify.cjs` uses this computer's Playwright and Chrome installation to export the card and check the layout. These are optional authoring tools; deployed pages have no runtime dependencies. Fonts and licenses are included in `dist/assets/`.
